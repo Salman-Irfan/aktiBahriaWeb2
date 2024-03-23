@@ -1,0 +1,30 @@
+.blueColor{
+    background-color: rgb(100, 100, 194);
+    /* color: red; */
+}
+
+.textWhite{
+    color: beige;
+}
+
+.minifyWidth{
+    border: 5px solid black;
+    width: 50%;
+    height: 25px;
+}
+
+.multipleStyles{
+    border: 5px dashed green;
+    border-radius: 5%;
+    width: 50%;
+    height: 500px;
+
+    border-left: 3px solid red;
+    
+    /* margin-left: 25%; */
+    /* margin-bottom: 400px; */
+    margin: 200px 30px 50px 170px;
+    padding: 30px 50px 70px 90px;
+    
+}
+
