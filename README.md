@@ -11,3 +11,5 @@ week 3, day 1, js varibales
 
 week 5 day 1
 js for loop
+
+array basics
