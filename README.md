@@ -13,3 +13,5 @@ week 5 day 1
 js for loop
 
 array basics
+
+object example of youtube video card
