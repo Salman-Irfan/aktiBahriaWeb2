@@ -3,6 +3,5 @@ console.log(arr)
 arr.splice(2,4,11,12,3487,895,"sdafj", "sdfaj", true)
 console.log(arr)
 
-for (let i in arr){
-    console.log(arr[i])
-}
+const selectedItems = arr.slice(2,8)
+console.log(selectedItems)
