@@ -1,5 +1,12 @@
 const express = require('express')
+const cors = require('cors')
+const testGetJsonController = require('./controllers/dummyControllers/testGetJsonController')
+const getTodosController = require('./controllers/dummyControllers/getTodosController')
+const testPostJsonController = require('./controllers/dummyControllers/testPostJsonController')
+
 const app = express()
+app.use(cors())
+app.use(express.json())
 const port = 3000
 
 app.get('/', (req, res) => {
@@ -11,24 +18,13 @@ app.get('/about', (req, res) => {
 
 
 
-app.get(`/test-get-json`, (req, res)=>{
-    res.json({
-        success: true,
-        data: 123,
-        age: 25,
-        name: "node server"
-    })
-})
+app.get(`/test-get-json`, testGetJsonController)
 
 // http get
-app.get(`/todos/1`, (req, res)=>{
-    res.json({
-        userId: 1,
-        id: 1,
-        title: "koi ajeeb c english",
-        completed: false
-    })
-})
+app.get(`/todos/1`, getTodosController)
+
+// post request
+app.post(`/test-post-json`, testPostJsonController)
 
 app.listen(port, () => {
     console.log(`Example app listening on ports ${port}`)
