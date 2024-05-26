@@ -5,6 +5,7 @@ const createUserAccountController = require('./controllers/bankControllers/userA
 const readAllBankAccountsController = require('./controllers/bankControllers/userAccountsControllers/readAllBankAccountsController.js')
 const readBankAccountByIdController = require('./controllers/bankControllers/userAccountsControllers/readBankAccountByIdController.js')
 const deleteUserBankAccountController = require('./controllers/bankControllers/userAccountsControllers/deleteUserBankAccountController.js')
+const updateUserBankAccountController = require('./controllers/bankControllers/userAccountsControllers/updateUserBankAccountController.js')
 const app = express()
 app.use(express.json())
 
@@ -23,7 +24,7 @@ app.get(`/api/read-bank-account/:id`, readBankAccountByIdController)
 // delete
 app.delete(`/api/delete-user-bank-account/:id`, deleteUserBankAccountController)
 // update
-// app.patch(`/api/update-user-bank-account/:id`, updateUserBankAccountController)
+app.patch(`/api/update-user-bank-account/:id`, updateUserBankAccountController)
 
 app.listen(PORT, () => {
     console.log(`Example app listening on PORT ${PORT}`)
