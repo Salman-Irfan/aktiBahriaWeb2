@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
+import AccoutnCreationFormView from '../views/AccoutnCreationFormView'
 
 const BMS = () => {
     // console.log("a random paragraph with 'a quote' and same with a")
     let a = 5
     // let bb = 10
     const [b, setB] = useState(20)
-    
+
     console.log(a)
     // handleIncrement
     const handleIncrement = () => {
@@ -14,21 +15,19 @@ const BMS = () => {
     }
     // handleIncrementB
     const handleIncrementB = () => {
-        setB(b+1)
+        setB(b + 1)
         console.log(b)
     }
     return (
         <>
             <div>BMS</div>
-            {
-                a
-            }
+            {a}
             <button className="bg-blue-500" onClick={handleIncrement} >Incremtn the a</button>
 
-            {
-                b
-            }
+            {b}
             <button className='bg-red-500' onClick={handleIncrementB}  >Incremtn the b</button>
+
+            <AccoutnCreationFormView/>
         </>
     )
 }
