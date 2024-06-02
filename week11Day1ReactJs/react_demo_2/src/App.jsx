@@ -4,7 +4,9 @@ import HomePage from "./components/pages/HomePage"
 import AboutPage from "./components/pages/AboutPage"
 import ContactPage from "./components/pages/ContactPage"
 import ServicesPage from "./components/pages/ServicesPage"
+import SpecificAccount from "./components/pages/SpecificAccount"
 import BMS from './components/pages/BMS'
+import ViewAllAccounts from './components/pages/ViewAllAccounts'
 
 
 const App = () => {
@@ -17,6 +19,8 @@ const App = () => {
         <Route path='/services' element={<ServicesPage />} />
         <Route path='/contact-us' element={<ContactPage />} />
         <Route path='/bms' element={<BMS />} />
+        <Route path='/all-accounts' element={<ViewAllAccounts />} />
+        <Route path='/account/:id' element={<SpecificAccount />} />
       </Routes>
     </>
   )

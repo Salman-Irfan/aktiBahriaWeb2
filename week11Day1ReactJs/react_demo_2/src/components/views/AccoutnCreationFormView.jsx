@@ -1,5 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
+import { sendAccountData } from '../../services/bankServices/accountsServices/sendAccountData';
+import { Link } from 'react-router-dom';
 
 const AccoutnCreationFormView = () => {
 
@@ -36,20 +38,22 @@ const AccoutnCreationFormView = () => {
     const handleAccountForm = async (e) => {
         e.preventDefault()
         console.log(accountForm)
-        try {
-            const createAccountApiResponse = await axios.post(`http://localhost:8000/api/create-user-account`)
-            console.log(createAccountApiResponse)
-        } catch (error) {
-            console.log(error)
-            alert(error.message)
-        }
+        // try {
+        //     const createAccountApiResponse = await axios.post(`http://localhost:8000/api/create-user-account`, accountForm )
+        //     console.log(createAccountApiResponse)
+        // } catch (error) {
+        //     console.log(error)
+        //     alert(error.message)
+        // }
+        sendAccountData(accountForm)
     }
 
     return (
         <>
             {/* btn start */}
-            <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">View All Accounts</button>
-
+            <Link to={`/all-accounts`}>
+                <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">View All Accounts</button>
+            </Link>
             {/* btn end */}
             <form className="max-w-md mx-auto" onSubmit={handleAccountForm}>
                 {/* name start */}
