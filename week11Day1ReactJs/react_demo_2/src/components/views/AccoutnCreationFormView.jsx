@@ -1,47 +1,137 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState } from 'react'
 
 const AccoutnCreationFormView = () => {
+
+    // const obj1 = {
+    //     id: 1,
+    //     name: `salman`
+    // }
+    // const obj2 = {
+    //     extra: 123,
+    //     ...obj1,
+    //     another: 567
+    // }
+    // console.log(obj2)
+    // obj2.someNew = "veru uniqy"
+    // console.log(obj2)
+
+    const [accountForm, setAccountForm] = useState({
+        customerName: ``,
+        accountNumber: ``,
+        initialBalance: 0,
+        idType: ``,
+        sourceOfIncome: ``,
+        totalBalance: 0,
+    })
+    // handleInputChange
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setAccountForm((prevState) => ({
+            ...prevState,
+            [name]: value,
+        }));
+    }
+    // handleAccountForm
+    const handleAccountForm = async (e) => {
+        e.preventDefault()
+        console.log(accountForm)
+        try {
+            const createAccountApiResponse = await axios.post(`http://localhost:8000/api/create-user-account`)
+            console.log(createAccountApiResponse)
+        } catch (error) {
+            console.log(error)
+            alert(error.message)
+        }
+    }
+
     return (
         <>
+            {/* btn start */}
+            <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">View All Accounts</button>
 
-
-            <form className="max-w-md mx-auto">
+            {/* btn end */}
+            <form className="max-w-md mx-auto" onSubmit={handleAccountForm}>
                 {/* name start */}
                 <div className="relative z-0 w-full mb-5 group">
-                    <input type="text" name="name" id="name" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" required />
-                    <label htmlFor="name" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Enter Customer Name</label>
+                    <input
+                        type="text"
+                        name="customerName"
+                        id="customerName"
+                        className="block py-2.5 px-0 w-full   border-0 border-b-2 border-gray-300  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Customer Name"
+                        required
+                        onChange={handleInputChange}
+                    />
                 </div>
                 {/* name end */}
                 {/* accoutn number start */}
                 <div className="relative z-0 w-full mb-5 group">
-                    <input type="text" name="accountNumber" id="accountNumber" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                    <label htmlFor="accountNumber" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Enter Account Number</label>
+                    <input
+                        type="text"
+                        name="accountNumber"
+                        id="accountNumber"
+                        className="block py-2.5 px-0 w-full   border-0 border-b-2 border-gray-300  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder="Enter Account Number "
+                        required
+                        onChange={handleInputChange}
+                    />
                 </div>
                 {/* accoutn number end */}
                 {/* initial balance start */}
                 <div className="relative z-0 w-full mb-5 group">
-                    <input type="number" name="initialBalance" id="initialBalance" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                    <label htmlFor="initialBalance" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Enter Initial Balance</label>
+                    <input
+                        type="number"
+                        name="initialBalance"
+                        id="initialBalance"
+                        className="block py-2.5 px-0 w-full   border-0 border-b-2 border-gray-300  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder="Enter Initial Balance "
+                        required
+                        onChange={handleInputChange}
+                    />
+
                 </div>
                 {/* initial balance end */}
 
                 {/* idType start */}
                 <div className="relative z-0 w-full mb-5 group">
-                    <input type="text" name="idType" id="idType" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" required />
-                    <label htmlFor="idType" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Enter idType </label>
+                    <input
+                        type="text"
+                        name="idType"
+                        id="idType"
+                        className="block py-2.5 px-0 w-full   border-0 border-b-2 border-gray-300  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter idType"
+                        required
+                        onChange={handleInputChange}
+                    />
+
                 </div>
                 {/* idType end */}
                 {/* sourceOfIncome start */}
                 <div className="relative z-0 w-full mb-5 group">
-                    <input type="text" name="sourceOfIncome" id="sourceOfIncome" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                    <label htmlFor="sourceOfIncome" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Enter Source Of Income</label>
+                    <input
+                        type="text"
+                        name="sourceOfIncome"
+                        id="sourceOfIncome"
+                        className="block py-2.5 px-0 w-full   border-0 border-b-2 border-gray-300  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder="Enter Source Of Income "
+                        required
+                        onChange={handleInputChange}
+                    />
+
                 </div>
                 {/* accoutn number end */}
 
                 {/* totalBalance start */}
                 <div className="relative z-0 w-full mb-5 group">
-                    <input type="text" name="totalBalance" id="totalBalance" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                    <label htmlFor="totalBalance" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Enter Total Balance</label>
+                    <input
+                        type="number"
+                        name="totalBalance"
+                        id="totalBalance"
+                        className="block py-2.5 px-0 w-full   border-0 border-b-2 border-gray-300  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" Enter Total Balance"
+                        required
+                        onChange={handleInputChange}
+                    />
+
                 </div>
                 {/* accoutn number end */}
 
