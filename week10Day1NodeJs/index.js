@@ -6,8 +6,10 @@ const readAllBankAccountsController = require('./controllers/bankControllers/use
 const readBankAccountByIdController = require('./controllers/bankControllers/userAccountsControllers/readBankAccountByIdController.js')
 const deleteUserBankAccountController = require('./controllers/bankControllers/userAccountsControllers/deleteUserBankAccountController.js')
 const updateUserBankAccountController = require('./controllers/bankControllers/userAccountsControllers/updateUserBankAccountController.js')
+const cors = require('cors')
 const app = express()
 app.use(express.json())
+app.use(cors())
 
 connectToMongoDB()
 

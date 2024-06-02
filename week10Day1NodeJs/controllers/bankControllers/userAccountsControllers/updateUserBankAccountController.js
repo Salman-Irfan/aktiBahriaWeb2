@@ -4,13 +4,13 @@ const updateUserBankAccountController = async (req, res) => {
     try {
         const { id } = req.params
         // extract req body data
-        const {name, accountNumber} = req.body
+        const {customerName, accountNumber} = req.body
         // update logic
 
         const updatedUserBankAccount = await BankAccounts.findByIdAndUpdate(
             id,
             {
-                name: name,
+                customerName: customerName,
                 accountNumber: accountNumber
             },
             {

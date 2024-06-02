@@ -2,7 +2,7 @@ const BankAccounts = require("../../../models/bankModels/userAccountModels/userA
 
 const createUserAccountController = async(req, res) => {
     try {
-        console.log(req.body)
+        
         // 8000 - 27017 
         const newUserAccount = new BankAccounts(req.body)
         await newUserAccount.save()

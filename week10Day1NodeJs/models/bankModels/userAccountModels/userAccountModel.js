@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const userAccountSchema = new Schema({
-    name: {
+    customerName: {
         type: String,
-        required: true
+        // required: true
     },
     accountNumber: {
         type: String,
-        unique: true,
+        // unique: true,
     },
     initialBalance: Number,
     idType: String,
