@@ -18,6 +18,17 @@ const ViewAllAccounts = () => {
         }
     };
 
+    // handleDeleteAccount
+    const handleDeleteAccount = async(id) => {
+        console.log(id)
+        const deleteAccountResponse = await axios.delete(`http://localhost:8000/api/delete-user-bank-account/${id}`)
+        console.log(deleteAccountResponse)
+        if (deleteAccountResponse.data.success){
+            alert(deleteAccountResponse.data.message)
+        }
+        setBankAccounts((prevAccounts) => prevAccounts.filter(account => account._id !== id));
+    }
+
     useEffect(() => {
         getAllAccountsService();
     }, []);
@@ -53,7 +64,7 @@ const ViewAllAccounts = () => {
                                     <button className='bg-blue-500'>View</button>
                                 </Link>
                                 <button className='bg-green-500'>Update</button>
-                                <button className='bg-red-500'>Delete</button>
+                                <button className='bg-red-500' onClick={()=>{handleDeleteAccount(account._id)}} >Delete</button>
                             </td>
                         </tr>
                     ))}
