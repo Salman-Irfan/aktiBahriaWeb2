@@ -12,7 +12,6 @@ import UpdateAccountFormPage from './components/pages/UpdateAccountFormPage'
 
 const App = () => {
   return (
-    
     <>
       <Routes>
         <Route path='/' element={<HomePage/>} />
