@@ -7,6 +7,7 @@ import ServicesPage from "./components/pages/ServicesPage"
 import SpecificAccount from "./components/pages/SpecificAccount"
 import BMS from './components/pages/BMS'
 import ViewAllAccounts from './components/pages/ViewAllAccounts'
+import UpdateAccountFormPage from './components/pages/UpdateAccountFormPage'
 
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
         <Route path='/bms' element={<BMS />} />
         <Route path='/all-accounts' element={<ViewAllAccounts />} />
         <Route path='/account/:id' element={<SpecificAccount />} />
+        <Route path='/account/update/:id' element={<UpdateAccountFormPage />} />
       </Routes>
     </>
   )
