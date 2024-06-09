@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { API, API_V1, BANK_API, BASE_URL, endPoints } from '../../constants/apiUrls/apiUrls';
 
 const ViewAllAccounts = () => {
     const [bankAccounts, setBankAccounts] = useState([]);
 
     const getAllAccountsService = async () => {
         try {
-            const getApiResponse = await axios.get(`http://localhost:8000/api/read-all-bank-accounts`);
+            // const getApiResponse = await axios.get(`http://localhost:8000/api/read-all-bank-accounts`);
+            const getApiResponse = await axios.get(`${BASE_URL}${API}${API_V1}${BANK_API}${endPoints.readUserAccounts}`);
             console.log(getApiResponse.data);
 
             // Set the state with the fetched data

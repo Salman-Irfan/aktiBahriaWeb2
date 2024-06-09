@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { API, API_V1, BANK_API, BASE_URL, endPoints } from '../../constants/apiUrls/apiUrls';
 
 const SpecificAccount = () => {
     // State variable
@@ -12,7 +13,8 @@ const SpecificAccount = () => {
 
     const getAccountDetailsById = async () => {
         try {
-            const specificDetailsApiResponse = await axios.get(`http://localhost:8000/api/read-bank-account/${id}`);
+            // const specificDetailsApiResponse = await axios.get(`http://localhost:8000/api/read-bank-account/${id}`);
+            const specificDetailsApiResponse = await axios.get(`${BASE_URL}${API}${API_V1}${BANK_API}${endPoints.readUserAccountById}/${id}`);
             console.log(specificDetailsApiResponse);
 
             // Set the state with the fetched data
